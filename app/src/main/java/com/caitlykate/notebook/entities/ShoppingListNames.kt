@@ -20,7 +20,7 @@ data class ShoppingListNames(
     @ColumnInfo (name = "allItemsCount")
     val allItemsCount: Int,
 
-    @ColumnInfo (name = "allItemsCount")
+    @ColumnInfo (name = "checkedItemsCount")
     val checkedItemsCount: Int,
 
     @ColumnInfo (name = "itemsIds")

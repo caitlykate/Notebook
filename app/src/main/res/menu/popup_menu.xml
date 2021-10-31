@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/new_note"
+        android:icon="@drawable/ic_note"
+        android:iconTint="@color/main_purple"
+        android:iconTintMode="src_in"
+        android:title="@string/note" />
+    <item
+        android:id="@+id/new_checklist"
+        android:icon="@drawable/ic_checklist"
+        android:iconTint="@color/main_purple"
+        android:iconTintMode="src_in"
+        android:title="@string/list" />
+
+</menu>

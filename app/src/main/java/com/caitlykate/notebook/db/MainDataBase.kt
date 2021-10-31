@@ -15,6 +15,8 @@ import com.caitlykate.notebook.entities.ShoppingListNames
 )
 abstract class MainDataBase : RoomDatabase() {
 
+    abstract fun getDao(): Dao
+
     companion object {
         @Volatile           //переменная мгновенно становится доступна для остальных потоков
         private var INSTANCE: MainDataBase? = null      //эту переменную будем возвращать когда запрашиваем БД
