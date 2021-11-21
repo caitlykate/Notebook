@@ -3,12 +3,16 @@ package com.caitlykate.notebook.activities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.util.Log
 import android.view.Gravity
 import android.widget.PopupMenu
 import com.caitlykate.notebook.R
 import com.caitlykate.notebook.databinding.ActivityMainBinding
+import com.caitlykate.notebook.dialogs.NewListDialog
 import com.caitlykate.notebook.fragments.FragmentManager
 import com.caitlykate.notebook.fragments.NoteFragment
+import com.caitlykate.notebook.fragments.ShopListNamesFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +37,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.id_notes -> {
                     FragmentManager.setFragment(NoteFragment.newInstance(), this)
                 }
-                R.id.id_shop_lists -> {}
+                R.id.id_shop_lists -> {
+                    FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
+                }
                 R.id.id_new -> {showPopup()}
             }
             true
@@ -52,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                     FragmentManager.currentFrag?.onClickNew()
                 }
                 R.id.new_checklist -> {
-
+                    FragmentManager.currentFrag?.onClickNew()
                 }
             }
             false
@@ -67,4 +73,5 @@ class MainActivity : AppCompatActivity() {
 
         }*/
     }
+
 }

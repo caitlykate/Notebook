@@ -57,7 +57,7 @@
                     android:padding="5dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="Заметка 1"
+                    android:text="Список покупок к Новому Году"
                     android:textColor="@color/white"
                     android:textSize="17sp"
                     android:textStyle="bold" />
@@ -69,8 +69,16 @@
                     android:padding="5dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="Мы вышли из дома когда во всех окнах погасли огни один за одним, мы видели как уезжает последний трамвай"
+                    android:text="10/14"
                     android:textColor="@color/light_grey" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp" />
 
                 <TextView
                     android:id="@+id/tvDate"

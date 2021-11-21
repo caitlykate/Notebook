@@ -1,4 +1,4 @@
-package com.caitlykate.notebook
+package com.caitlykate.notebook.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.caitlykate.notebook.R
 import com.caitlykate.notebook.databinding.NoteListItemBinding
 import com.caitlykate.notebook.entities.NoteItem
+import com.caitlykate.notebook.utils.HtmlManager
 
-class NoteAdapter: ListAdapter<NoteItem, NoteAdapter.ItemHolder>(ItemComparator()) {
+class NoteAdapter(private val listener: Listener): ListAdapter<NoteItem, NoteAdapter.ItemHolder>(
+    ItemComparator()
+) {
 
     //создается
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -18,17 +22,23 @@ class NoteAdapter: ListAdapter<NoteItem, NoteAdapter.ItemHolder>(ItemComparator(
 
     //заполняется
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        holder.setData(getItem(position))
+        holder.setData(getItem(position), listener)
     }
 
     class ItemHolder(view: View): RecyclerView.ViewHolder(view){
 
         private  val binding = NoteListItemBinding.bind(view)
 
-        fun setData(note: NoteItem) = with(binding){
+        fun setData(note: NoteItem, listener: Listener) = with(binding){
             tvTitle.text = note.title
-            tvText.text = note.content
+            tvText.text = HtmlManager.getFromHtml(note.content).trim()
             tvDate.text = note.time
+            itemView.setOnClickListener {
+                listener.onClickItem(note)
+            }
+            ibDelete.setOnClickListener{
+                listener.deleteItem(note.id!!)
+            }
         }
 
         companion object{
@@ -42,14 +52,18 @@ class NoteAdapter: ListAdapter<NoteItem, NoteAdapter.ItemHolder>(ItemComparator(
 
     class ItemComparator: DiffUtil.ItemCallback<NoteItem>(){
         override fun areItemsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
-            return  oldItem.id == newItem.id
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
-            return  oldItem == newItem
+            return oldItem == newItem
         }
 
     }
 
+    interface Listener{
+        fun deleteItem(id: Int)
+        fun onClickItem(note: NoteItem)
+    }
 
 }

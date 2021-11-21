@@ -14,4 +14,11 @@
     <color name="white">#FFFFFF</color>
     <color name="grey">#B5B5B5</color>
 
+    <color name="picker_red">#CA372C</color>
+    <color name="picker_blue">#3F51B5</color>
+    <color name="picker_green">#347511</color>
+    <color name="picker_black">#000000</color>
+    <color name="picker_grey">#F1F1F1</color>
+    <color name="picker_orange">#FF9800</color>
+
 </resources>

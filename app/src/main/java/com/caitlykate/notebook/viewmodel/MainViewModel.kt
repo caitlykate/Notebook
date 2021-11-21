@@ -1,10 +1,12 @@
 package com.caitlykate.notebook.viewmodel
 
+import android.app.Activity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import com.caitlykate.notebook.activities.MainApp
 import com.caitlykate.notebook.db.MainDataBase
 import com.caitlykate.notebook.entities.NoteItem
+import com.caitlykate.notebook.entities.ShoppingListName
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
@@ -13,11 +15,29 @@ class MainViewModel(dataBase: MainDataBase): ViewModel() {
     private val dao = dataBase.getDao()
 
     //когда список будет меняться, LiveData автоматически обновится
-    val allNotes: LiveData<List<NoteItem>>  = dao.getAllNotes().asLiveData()    //один раз достаем из БД у что мы подключили Flow
+    val allNotes: LiveData<List<NoteItem>>  = dao.getAllNotes().asLiveData()    //один раз достаем из БД потому что мы подключили Flow
     //во view подключим обсервер, кот. следит за изменениями, там будет запускаться ф-я
+
+    val allListsNames: LiveData<List<ShoppingListName>>  = dao.getAllListsNames().asLiveData()
 
     fun insertNote(note: NoteItem) = viewModelScope.launch {            //в корутине
         dao.insertNote(note)
+    }
+
+    fun insertShopListName(listName: ShoppingListName) = viewModelScope.launch {            //в корутине
+        dao.insertShopListName(listName)
+    }
+
+    fun updateNote(note: NoteItem) = viewModelScope.launch {            //в корутине
+        dao.updateNote(note)
+    }
+
+    fun deleteNote(id: Int) = viewModelScope.launch {            //в корутине
+        dao.deleteNote(id)
+    }
+
+    fun deleteShopListName(id: Int) = viewModelScope.launch {            //в корутине
+        dao.deleteShopListName(id)
     }
 
     //получать доступ к ViewModel мы будем через делегата (спец. метод viewModels)
@@ -37,3 +57,5 @@ class MainViewModel(dataBase: MainDataBase): ViewModel() {
 }
 
 fun Fragment.factory() = MainViewModel.MainViewModelFactory((requireContext().applicationContext as MainApp).database)
+
+fun Activity.factory() = MainViewModel.MainViewModelFactory((applicationContext as MainApp).database)

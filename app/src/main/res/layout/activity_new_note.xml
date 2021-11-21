@@ -31,7 +31,7 @@
         android:ems="10"
         android:gravity="top|left"
         android:hint="@string/content"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine|textPersonName"
         android:padding="15dp"
         android:textColor="@color/light_grey"
         android:textColorHint="@color/hint_text_grey"
@@ -39,4 +39,86 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edTitle" />
+
+    <LinearLayout
+        android:id="@+id/colorPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/ibRed"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@null"
+                    app:srcCompat="@color/picker_red" />
+
+                <ImageButton
+                    android:id="@+id/ibOrange"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@null"
+                    app:srcCompat="@color/picker_orange" />
+
+                <ImageButton
+                    android:id="@+id/ibGreen"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@null"
+                    app:srcCompat="@color/picker_green" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/ibBlue"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@null"
+                    app:srcCompat="@color/picker_blue" />
+
+                <ImageButton
+                    android:id="@+id/ibGrey"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@null"
+                    app:srcCompat="@color/picker_grey" />
+
+                <ImageButton
+                    android:id="@+id/ibBlack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@null"
+                    app:srcCompat="@color/picker_black" />
+            </TableRow>
+
+        </TableLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

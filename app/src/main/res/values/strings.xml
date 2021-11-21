@@ -9,9 +9,16 @@
     <string name="title">Title</string>
     <string name="content">Content</string>
     <string name="save">Save</string>
-
+    <string name="list_name">List name</string>
+    <string name="create_list">Create list</string>
+    <string name="del_message">Are you sure you want to delete?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bold">bold</string>
+    <string name="color">color</string>
+    <string name="empty">Empty</string>
 
 </resources>
